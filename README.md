@@ -96,15 +96,15 @@ console.log('new array', mynewArray);
 To aviod changing the original array, we can also use the spread operator when we need to copy an array: 
 
 ``` js 
-let werktage = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag']
-let wochenende = ['Samstag', 'Sonntag']
+let working days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+let weekend = ['Saturday', 'Sunday']
 
-let woche = [...werktage, ...wochenende]
-console.log(woche);
+let week = [...weekdays, ...weekend]
+console.log(week);
 
-// wir können auch hier kopien erstellen: 
-let neueWoche = [...woche]
-// Die Kopien sind nicht die selben wie die ursprünglichen Objekte. 
+// we can also create copies here: 
+let newWeek = [...week]
+// The copies are not the same as the original array. 
 
 ```
 
@@ -139,8 +139,8 @@ for (let prop in person) {
 
 And using the `[]` notation to find the value: 
 ``` js
-for (let eig in person) {
-  console.log(person[eig]);
+for (let prop in person) {
+  console.log(person[prop]);
 }
 ```
 
@@ -149,58 +149,58 @@ for (let eig in person) {
 With optional caining, we can avoid getting errors in the code if a property is missing: If it is not there, we just get `undefined`. Without optional chaining we get an error. 
 
 ``` js
-let hausNummer = person.adresse.nummer
+let houseNumber = person.address.number
 
-let nichtdaNummer = person.telefon?.nummer
-console.log(hausNummer, nichtdaNummer);
+let notDefinedNumber = person.telefon?.number
+console.log(houseNumber, notDefinedNumber);
 ```
 
 In an array of objects this looks like this: Example data from this API call: `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
 ```js
   const { word, meanings } = data[0];
-          const explanation = meanings[0]?.definitions[0]?.definition;
+  const explanation = meanings[0]?.definitions[0]?.definition;
 
 ```
 ### Spread Operator with Objects
-When we work with object in React, we always create a copy and work on this. 
+When we work with objects in React, we always create a copy and work on this. 
 
-There are 2 usefull operators for this: the Spread and the rest operator: 
+There are 2 usefull operators for this: the spread and the rest operator: 
 
 #### spread
 
 ``` js
 let person1 = {
   name: 'Arne', 
-  alter: 55
+  age: 55
 }
 
-let personKopie = {...person1}
+let personCopy = {...person1}
 
-console.log(person1, personKopie);
+console.log(person1, personCopy);
 ```
-This is the same as working with the older method `Object.assign`
+This is the same as working with the older method `Object.assign()`
 ``` js
-let altePerson = Object.assign({}, person1)
-console.log('alte art', altePerson);
+let oldWayPerson = Object.assign({}, person1)
+console.log('old way', oldWayPerson);
 ```
 We can also use the spread operator to combine 2 objects. 
 ``` js
-let neueEigenschaften = {
-  hobby: 'angeln', 
-  sternzeichen: 'fisch' 
+let newProperties = {
+  hobby: ‘fishing’, 
+  starSign: ‘fish’ 
 }
 
-let neuePerson = {...person1, ...neueEigenschaften}
-console.log({neuePerson});
+let newPerson = {...person1, ...newProperties}
+console.log({newPerson});
 ```
 
 ### Rest in objects
 ``` js
-let {g, d, ...ubrig} = {g: 10, d: 20, e: 30, f: 40}
+let {g, d, ...leftover} = {g: 10, d: 20, e: 30, f: 40}
 g; // 10 
 d; // 20 
-ubrig; // { e: 30, f: 40 }
-console.log(ubrig);
+leftover; // { e: 30, f: 40 }
+console.log(leftover);
 ``` 
 
 ### Destructuring Objects
